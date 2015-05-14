@@ -33,4 +33,4 @@ purge: stop
 	@docker-compose rm
 
 port:
-	@echo "Sonarqube will be available at http://$(shell docker port dockersonarqube_sonarqube_1 9000)"
+	@echo "Sonarqube will be available at http://$(shell docker port dockersonarqube_sonarqube_1 8080)"
