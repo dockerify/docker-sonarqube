@@ -13,18 +13,9 @@ CMD ["mkdir", "/opt/sonar/extensions"]
 CMD ["mkdir", "/opt/sonar/extensions/plugins"]
 CMD ["mkdir", "/opt/sonar/logs"]
 
-ADD *.jar /opt/sonar/extensions/plugins/
-ADD sonar-javascript-plugin-2.3.jar /opt/sonar/extensions/plugins/
-
 VOLUME /opt/sonar/extensions
 VOLUME /opt/sonar/extensions/plugins
 VOLUME /opt/sonar/logs
-
-ENV JS_PLUGIN_VERSION 2.3
-RUN cd /opt/sonar/extensions/plugins && \
-  curl -sLo sonar-javascript-plugin-${JS_PLUGIN_VERSION}.jar \
-    http://repository.codehaus.org/org/codehaus/sonar-plugins/javascript/sonar-javascript-plugin/${JS_PLUGIN_VERSION}/sonar-javascript-plugin-${JS_PLUGIN_VERSION}.jar
-
 
 ENTRYPOINT ["/app/init"]
 CMD ["app:start"]
